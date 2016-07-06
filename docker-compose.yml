@@ -1,0 +1,14 @@
+wordpress:
+  build: .
+  links:
+    - 'wordpressdb:mysql'
+  ports:
+    - '8080:80'
+  volumes:
+    - ../wp-theme/:/var/www/html/wp-content/themes/docker_theme
+wordpressdb:
+  image: 'mariadb:latest'
+  expose:
+    - 3306
+  environment:
+    - MYSQL_ROOT_PASSWORD=dockerwordpress
